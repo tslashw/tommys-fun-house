@@ -28,7 +28,7 @@
                     </p>
                 </div>
                 <div class="project-card-footer">
-                    <button>PLAY GAME</button>
+                    <button disabled>PLAY GAME</button>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
                     </p>
                 </div>
                 <div class="project-card-footer">
-                    <button>PLAY GAME</button>
+                    <button disabled>PLAY GAME</button>
                 </div>
             </div>
 

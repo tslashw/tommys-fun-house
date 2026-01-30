@@ -8,6 +8,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<title>Tommy's Fun House</title>
 </svelte:head>
 
 {@render children()}

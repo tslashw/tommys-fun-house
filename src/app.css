@@ -142,6 +142,15 @@ body {
     cursor: pointer;
 }
 
+.project-card button:disabled {
+    opacity: 50%;
+}
+
+.project-card button:disabled:hover {
+    cursor: default;
+    border: solid white;
+}
+
 
 
 
