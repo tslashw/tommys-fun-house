@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Slackey&display=swap');
+
+/* Overload browser styling: */
+html {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+:root {
+    --title-font: "Slackey", sans-serif;
+    --main-font: "Open Sans", sans-serif;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    
+    background-color: black;
+    color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content h1.main-title {
+    font-family: var(--title-font);
+    font-size: 5vw;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+
+    margin-top: 2vh;
+
+    color: #F7AD45;
+    text-shadow: 0.25vw 0.25vw #BB3E00;
+
+    justify-self: center;
+    align-self: center;
+}
+
+.content h2 {
+    justify-self: center;
+    align-self: center;
+    color: white;
+    font-family: var(--main-font);
+}
+
+
+.projects {
+    width: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 3vw;
+
+    justify-self: center;
+    align-self: center;
+}
+
+.project-card {
+    height: 35vh;
+
+    aspect-ratio: 3/4;
+
+    border: solid rgb(70, 70, 70);
+    border-radius: 0.5vw;
+
+    /* display: flex;
+    flex-direction: column; */
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% auto auto 20%;
+
+    justify-items: center;
+    align-items: center;
+
+    font-family: var(--main-font);
+}
+
+.project-card-footer {
+    height: 5vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.project-card h1 {
+    font-size: 1vw;
+}
+
+.project-card img {
+    max-width: 95%;
+    border: solid white;
+}
+
+.project-description {
+    max-width: 90%;
+    height: 100%;
+    font-family: var(--main-font);
+    justify-self: center;
+    align-self: center;
+
+    font-size: clamp(0.5vw, 0.75vw, 1.25vw);
+}
+
+.project-card button {
+    background: none;
+    color: white;
+    border: solid white;
+    border-radius: 0.5vw;
+
+    padding: 1vw;
+
+    font-size: clamp(0.5vw, 0.75vw, 1vw);
+}
+
+.project-card button:hover {
+    border: solid green;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.content-footer {
+    align-self: center;
+    font-size: 1.5vw;
+    margin-top: 5vh;
+
+    font-family: var(--main-font);
+}

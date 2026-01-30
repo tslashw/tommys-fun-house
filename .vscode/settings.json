@@ -1,0 +1,7 @@
+{
+    "workbench.colorCustomizations": {
+        "statusBar.background" : "#d0750d",
+        "titleBar.activeBackground" : "#d0750d"
+    },
+    "editor.mouseWheelZoom": true
+}
