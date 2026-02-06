@@ -1,3 +1,9 @@
+/* GOOGLE FONT IMPORTS: */
+/* Spicy Rice:  */
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+/* Texturina */
+@import url('https://fonts.googleapis.com/css2?family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap');
+
 /* Overload browser styling: */
 html {
     margin: 0;
@@ -19,7 +25,8 @@ body {
     box-sizing: border-box;
 }
 
-.app {
-    background-color: black;
-    min-height: 100dvh;
+
+:root {
+    --title-font: "Spicy Rice", serif;
+    --main-font: "Texturina", serif;
 }
