@@ -1,0 +1,4 @@
+# Netlify redirects for child sites hosted separately.
+# Replace the target URL(s) with each child site's Netlify URL or custom domain.
+/blackjack-tycoon            https://blackjack-tycoon.netlify.app            200
+/blackjack-tycoon/*          https://black-tycoon.netlify.app/:splat      200

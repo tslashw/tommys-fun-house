@@ -1,0 +1,17 @@
+{
+    "workbench.colorCustomizations": {
+        // Changes the Status Bar at the bottom
+        "statusBar.background": "#af6715",
+        "statusBar.foreground": "#FFFFFF",
+        // Changes the Title Bar at the top (Windows/Linux/macOS)
+        "titleBar.activeBackground": "#af6715",
+        "titleBar.activeForeground": "#ffffff",
+        "titleBar.inactiveBackground": "#af6715",
+        "titleBar.inactiveForeground": "#ffffff99"
+    },
+    // Customizes the text shown in the Title Bar
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
+
+    // mouse wheel zoom:
+    "editor.mouseWheelZoom": true
+}
