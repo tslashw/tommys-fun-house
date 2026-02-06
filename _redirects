@@ -1,3 +1,4 @@
+/blackjack-tycoon            /blackjack-tycoon/                                                     301!
 /blackjack-tycoon            https://blackjack-tycoon.netlify.app/blackjack-tycoon/                 200
-/blackjack-tycoon/*          https://blackjack-tycoon.netlify.app/blackjack-tycoon/:splat           200!
+/blackjack-tycoon/*          https://blackjack-tycoon.netlify.app/blackjack-tycoon/:splat           200
 /*                           /.netlify/functions/sveltekit-render                                   200
