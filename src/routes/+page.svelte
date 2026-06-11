@@ -1,137 +1,157 @@
 <script>
-    let selectedNavItem = "games";
+    import Button from '$lib/components/Button.svelte';
+    import GameCard from '$lib/components/GameCard.svelte';
+    import WavyHeading from '$lib/components/WavyHeading.svelte';
+    import { games } from '$lib/games.js';
 </script>
 
+<svelte:head>
+    <title>Tommy's Fun House — games & experiments</title>
+    <meta
+        name="description"
+        content="The home of Tommy's games and code experiments."
+    />
+</svelte:head>
 
-<div class="app">
+<!-- GAMES -->
+<section id="games" class="block shell">
+    <div class="panel">
+        <div class="block-head">
+            <WavyHeading text="The Arcade" />
+        </div>
 
-    <div class="title">
-        <h1>Tommy's Fun House</h1>
-        <span>
-            
-            <button onclick={() => (selectedNavItem = "games")} class:selected={selectedNavItem === "games"} style="color: #3c5e8b">
-                Games
-            </button>
-            
-            <button onclick={() => (selectedNavItem = "about")} class:selected={selectedNavItem === "about"} style="color: #25562e">
-                About
-            </button>
-            
-        </span>
+        <div class="grid">
+            {#each games as game (game.href)}
+                <GameCard {...game} />
+            {/each}
+
+            <!-- "coming soon" placeholder keeps the grid lively while small -->
+            <div class="soon">
+                <span class="soon-text">More coming soon</span>
+            </div>
+        </div>
     </div>
-    
-    <div 
-        class="content" 
-        class:games={selectedNavItem === "games"}
-        class:about={selectedNavItem === "about"}
-    >
+</section>
 
-    {#if selectedNavItem === "games"}
-        <a href="/blackjack-tycoon/"><h1>BLACKJACK TYCOON</h1></a>
-    {:else if selectedNavItem === "about"}
-        <h1>ABOUT</h1>
-    {/if}
-
+<!-- ABOUT -->
+<section id="about" class="block shell">
+    <div class="about-intro panel">
+        <WavyHeading text="About" />
+        <div class="about-body">
+            <img
+                class="avatar"
+                src="/tommy.png"
+                alt="Pixel-art portrait of Tommy wearing a beanie and glasses"
+                width="1254"
+                height="1254"
+            />
+            <p class="lede">
+                Hi I'm Tommy. A full stack software engineer based in the UK. This site is where I host some of the projects that I have made.
+            </p>
+        </div>
     </div>
-    
-
-</div>
-
-
+</section>
 
 <style>
-
-    .app {
-        min-height: 100dvh;
-        height: 100dvh;
-        box-sizing: border-box;
-        overflow: hidden;
-        
-        background-color: #ead4aa;
-
-        display: flex;
-        flex-direction: column;
+    /* Sections sit under a sticky navbar — offset anchor jumps so the
+       heading isn't hidden behind it. */
+    section[id] {
+        scroll-margin-top: 5.5rem;
     }
 
-    .title {
+    /* ---- BLOCKS (shared) ---- */
+    .block {
+        margin-top: clamp(var(--space-12), 7vw, var(--space-16));
+    }
+
+    .block-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--space-4);
+        margin-bottom: var(--space-3);
+    }
+
+    /* Poster wall: fixed-width tracks so cards keep their 2:3 shape
+       instead of stretching to fill the row. Left-aligned to sit flush
+       with the "The Arcade" heading. */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 280px));
+        justify-content: start;
+        gap: var(--space-6);
+    }
+
+    /* coming-soon tile, dashed to read as a placeholder */
+    .soon {
         display: flex;
         flex-direction: column;
-        gap: 0;
         align-items: center;
-    }
-
-    .title h1 {
-        font-family: var(--title-font);
-        font-size: clamp(2rem, 5vw, 8rem);
-        line-height: 1;
-        color: #da863e;
-        text-shadow: 3px 3px black;
-
-        padding: 0;
-        margin: 0;
-
-    }
-
-    .title span {
-        display: flex;
-        flex-direction: row;
         justify-content: center;
-        gap: 2vw;
+        gap: var(--space-2);
+        aspect-ratio: 2 / 3;
+        padding: var(--space-6);
+        border: var(--border-w) dashed var(--ink);
+        border-radius: var(--radius);
+        color: var(--ink);
+        opacity: 0.6;
+    }
+    .soon-text { font-weight: 700; }
 
-        margin: 1vh 0 1vh 0;
-        padding: 0;
+    /* Shared bordered card wrapper used by the Arcade + About sections */
+    .panel {
+        /* roomy sides + bottom, tighter top so headings sit higher */
+        padding: clamp(var(--space-4), 3vw, var(--space-6))
+                 clamp(var(--space-6), 4vw, var(--space-12))
+                 clamp(var(--space-6), 4vw, var(--space-12));
+        background: var(--ember-tint);
+        border: var(--stroke);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hard-lg);
     }
 
-    .title span button {
-        background: none;
-        border: none;
-        margin: 0;
-        font-family: var(--main-font);
-        font-size: clamp(1rem, 3vw, 3rem);
-        line-height: 1;
-        font-weight: 900;
-
+    /* ---- ABOUT ---- */
+    .about-intro {
+        margin-bottom: var(--space-8);
+    }
+    .about-intro .lede {
+        max-width: 60ch;
     }
 
-    .title span button.selected {
-
-    }
-
-    .title span button:hover {
-        cursor: pointer;
-        animation: jiggle 250ms ease-in-out infinite;
-    }
-
-    @keyframes jiggle {
-        0% {
-
-        }
-        50% {
-            transform: rotateZ(3deg);
-        }
-        100% {
-            transform: rotateZ(-3deg);
-        }
-    }
-
-
-
-    .content {
-        flex: 0.98;
-        width: 65%;
-        align-self: center;
-
-        border: solid max(3px, 0.1vw) #090a14;
-        border-radius: 0.25vw;
-        
-        background-color: #e7d5b3;
-
+    /* avatar + bio side by side, stacking on narrow screens */
+    .about-body {
         display: flex;
+        align-items: center;
+        gap: clamp(var(--space-4), 4vw, var(--space-8));
+        margin-top: var(--space-4);
     }
-    .content.games {
-        border-color: #3c5e8b;
+    .about-body .lede {
+        margin: 0;
     }
-    .content.about {
-        border-color: #25562e;
+    .avatar {
+        flex: 0 0 auto;
+        width: clamp(120px, 26vw, 190px);
+        height: auto;
+        aspect-ratio: 1;
+        border: var(--stroke);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hard);
+        background: var(--paper-raised);
+    }
+    @media (max-width: 560px) {
+        .about-body {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    .lede {
+        font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem);
+        margin: var(--space-3) 0 var(--space-8);
+    }
+    .lede em {
+        font-style: normal;
+        color: var(--ember-deep);
+        font-weight: 700;
     }
 </style>
