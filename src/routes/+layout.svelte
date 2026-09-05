@@ -6,6 +6,14 @@
 	import Background from '$lib/components/background/Background.svelte';
 
 	let { children } = $props();
+
+	// The header/footer are position:fixed, so <main> needs padding equal to
+	// their heights to clear them. Measured live (Svelte uses a ResizeObserver
+	// for bind:offsetHeight) so responsive height changes stay correct. Seeded
+	// with approximate values so the first paint before hydration doesn't tuck
+	// content under the header.
+	let headerH = $state(72);
+	let footerH = $state(76);
 </script>
 
 <svelte:head>
@@ -18,11 +26,17 @@
 </div>
 
 <div class="page">
-	<NavBar />
-	<main>
+	<div class="chrome chrome-top" bind:offsetHeight={headerH}>
+		<NavBar />
+	</div>
+
+	<main style="padding-top: {headerH}px; padding-bottom: {footerH}px;">
 		{@render children()}
 	</main>
-	<Footer />
+
+	<div class="chrome chrome-bottom" bind:offsetHeight={footerH}>
+		<Footer />
+	</div>
 </div>
 
 <style>
@@ -35,13 +49,21 @@
 		pointer-events: none;
 	}
 
-	.page {
-		display: flex;
-		flex-direction: column;
-		min-height: 100dvh;
+	/* The page itself is the scroll container again (so it rubber-bands
+	   naturally on iOS). The header/footer are lifted out of flow and pinned
+	   to the viewport edges; <main> is padded to clear them. Overscrolling
+	   then bounces the content while these stay put, opening a gap that
+	   reveals the animated background. */
+	.chrome {
+		position: fixed;
+		left: 0;
+		right: 0;
+		z-index: 10;
 	}
-
-	main {
-		flex: 1;
+	.chrome-top {
+		top: 0;
+	}
+	.chrome-bottom {
+		bottom: 0;
 	}
 </style>

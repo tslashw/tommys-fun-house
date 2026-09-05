@@ -11,7 +11,6 @@
 
 <style>
     .foot {
-        margin-top: var(--space-16);
         border-top: var(--stroke);
         background: var(--ink);
         color: var(--paper);
