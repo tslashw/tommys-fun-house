@@ -18,8 +18,8 @@ export const games = [
         devices: ['desktop'],
     },
     {
-        href: '/flag-guru/',
-        title: 'Flag Guru',
+        href: '/flag-champion/',
+        title: 'Flag Champion',
         blurb: 'Test your flag knowledge in a quickfire quiz.',
         devices: ['desktop', 'mobile'],
     },

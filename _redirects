@@ -1,5 +1,5 @@
 /blackjack-tycoon            https://blackjack-tycoon.netlify.app/blackjack-tycoon/                 200
 /blackjack-tycoon/*          https://blackjack-tycoon.netlify.app/blackjack-tycoon/:splat           200
-/flag-guru                   https://flagguru.netlify.app/flag-guru/                                200
-/flag-guru/*                 https://flagguru.netlify.app/flag-guru/:splat                          200
+/flag-champion               https://flagchampion.netlify.app/flag-champion/                        200
+/flag-champion/*             https://flagchampion.netlify.app/flag-champion/:splat                  200                          200
 /*                           /.netlify/functions/sveltekit-render                                   200
